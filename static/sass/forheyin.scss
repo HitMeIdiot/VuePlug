@@ -24,6 +24,39 @@ $f28: re(28);
 $f30: re(30);
 $f32: re(32);
 $f34: re(34);
+// index.html css
+#myCss {
+    header {
+        height: 40px;
+        line-height: 40px;
+        background: -webkit-linear-gradient(left, #8B94FD, #1f7ef2,#EA2000); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, #8B94FD, #1f7ef2,#EA2000); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, #8B94FD, #1f7ef2,#EA2000); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right, #8B94FD,#1f7ef2,#EA2000); /* The grammar of the standard (must be put at last) */
+        margin-bottom: 10px;
+        h1 {
+            font-size: re(40);
+            text-align: center;
+            height: 30px;
+            color: #fff;
+        }
+    }
+    ul.main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+        li {
+            margin-bottom: 40px;
+            width: 33.33%;
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}
 // button
 .btn {
     -webkit-appearance: none;

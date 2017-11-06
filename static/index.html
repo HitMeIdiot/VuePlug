@@ -11,13 +11,13 @@
     <script src="js/flexible_css.debug.js"></script>
     <script src="js/flexible.debug.js"></script>
     <style>
-
+        
     </style>
 
 </head>
 
 <body>
-    <div id="myCss" style="margin: 10px" v-cloak>
+    <div id="myCss" v-cloak>
         <!-- <ul class="def_form">
             <li>
                 <b>测试卷</b>
@@ -46,9 +46,17 @@
                 </transition>
             </li>
         </ul> -->
-        <ul>
-            <li>
-                <span></span>
+        <header>
+            <h1>Demo list</h1>
+        </header>
+        <ul class="main">
+            <li v-for="i in assList">
+                <div>
+                    <a :href="i.url">
+                        <img src="../img/icon.png" alt="">
+                        <p>{{i.name}}</p>
+                    </a>
+                </div>
             </li>
         </ul>
     </div>
@@ -65,7 +73,19 @@
             show: false,
             flag: true,
             site: '',
-            toastText: ''
+            toastText: '',
+            assList: [
+                {
+                    name: 'Toast',
+                    url: 'view/toast.html'
+                },{
+                    name: 'Confirm',
+                    url: 'view/confirm.html'
+                },{
+                    name: 'Button',
+                    url: 'view/button.html'
+                },
+            ]
         },
         created: function () {
             console.log(this)
