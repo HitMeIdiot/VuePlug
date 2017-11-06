@@ -98,11 +98,11 @@ $f34: re(34);
     }
 }
 // vue animation
-.fade-enter-active, .fade-leave-active {
+.out-enter-active, .out-leave-active {
     transition: opacity .5s
 }
-.fade-enter, .fade-leave-active {
-opacity: 0
+.out-enter, .out-leave-active {
+    opacity: 0
 }
 
 // toast confirm  the same css
@@ -136,7 +136,7 @@ opacity: 0
         p {
             color: $f;
             padding: re(24) 0;
-            font-size: $f30;
+            font-size: $f32;
             text-align: center;
         }
     }

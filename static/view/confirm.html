@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>confirms</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/forheyin.css" />
+    <script src="../js/flexible_css.debug.js"></script>
+    <script src="../js/flexible.debug.js"></script>
+</head>
+
+<body>
+    <div id="confirms" style="margin: 10px" v-cloak>
+        <transition name="out">
+            <div class="confirm" v-show="flag">
+                <div class="m_con">
+                    <div class="m_head">操作提示</div>
+                    <div class="m_body">
+                        长风破浪会有时，直挂云帆济沧海
+                    </div>
+                    <div class="m_foot">
+                        <span @tap="flag=false">取消</span>
+                        <span @tap="flag=false">确定</span>
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+<script src="../js/vue2.4.min.js"></script>
+<script src="../js/yhn-tap.js"></script>
+<script src="../js/plug.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var vm = new Vue({
+        el: '#confirms',
+        data: {
+            flag: true
+        },
+        created: function () {
+        },
+        methods: {
+        }
+    })
+</script>
+
+</html>

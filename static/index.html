@@ -11,19 +11,14 @@
     <script src="js/flexible_css.debug.js"></script>
     <script src="js/flexible.debug.js"></script>
     <style>
+
     </style>
 
 </head>
 
 <body>
     <div id="myCss" style="margin: 10px" v-cloak>
-        <button class="btn btn_def">大苏打</button>
-        <button class="btn btn_pri">大苏打</button>
-        <button class="btn btn_warn">大苏打</button>
-        <div class="cut"></div>
-        <button class="btn btn_pri btn_large">大苏打</button>
-        <div class="cut"></div>
-        <ul class="def_form">
+        <!-- <ul class="def_form">
             <li>
                 <b>测试卷</b>
                 <p>收拾收拾</p>
@@ -41,46 +36,26 @@
                 <div class="acc_2" @tap="cutAcc(i)">{{i.name}}
                     <span class="iconfont icon-right"></span>
                 </div>
-                <ul class="acc_3 " v-show="i.isA">
-                    <li>白日依山尽</li>
-                    <li>黄河入海流</li>
-                    <li>欲穷千里目</li>
-                    <li>更上一层楼</li>
-                </ul>
+                <transition name="out">
+                    <ul class="acc_3 " v-show="i.isA">
+                        <li>白日依山尽</li>
+                        <li>黄河入海流</li>
+                        <li>欲穷千里目</li>
+                        <li>更上一层楼</li>
+                    </ul>
+                </transition>
+            </li>
+        </ul> -->
+        <ul>
+            <li>
+                <span></span>
             </li>
         </ul>
-        <!-- toast插件 -->
-        <transition name="fade">
-                <div class="toast" v-show="show">
-                        <div :class="[site,'m_con']">
-                            <p>我是一个toast</p>
-                        </div>
-                    </div>
-        </transition>
-        <div class="cut"></div>
-        <button class="btn btn_def" @tap="top">上</button>
-        <button class="btn btn_pri" @tap="mid">中</button>
-        <button class="btn btn_warn" @tap="bot">下</button>
-        <div class="cut"></div>
-        <!-- confirm -->
-        <transition name="fade">
-            <div class="confirm" v-show="flag">
-                <div class="m_con">
-                    <div class="m_head">操作提示</div>
-                    <div class="m_body">
-                        长风破浪会有时，直挂云帆济沧海
-                    </div>
-                    <div class="m_foot">
-                        <span @tap="flag=false">取消</span>
-                        <span @tap="flag=false">确定</span>
-                    </div>
-                </div>
-            </div>
-        </transition>
     </div>
 </body>
 <script src="js/vue2.4.min.js"></script>
 <script src="js/yhn-tap.js"></script>
+<script src="js/plug.js"></script>
 <script type="text/javascript" charset="utf-8">
     var vm = new Vue({
         el: '#myCss',
@@ -89,17 +64,19 @@
             list: [],
             show: false,
             flag: true,
-            site: ''
+            site: '',
+            toastText: ''
         },
-        created() {
+        created: function () {
+            console.log(this)
             var test = [{
                 name: '登鹳雀楼'
-            },{
+            }, {
                 name: '将进酒'
-            },{
+            }, {
                 name: '蜀道难'
             }]
-            test.forEach(function(item) {
+            test.forEach(function (item) {
                 item.isA = false
             });
             this.list = test;
@@ -107,26 +84,6 @@
         methods: {
             cutAcc: function (j) {
                 j.isA = !j.isA;
-            },
-            // toast
-            change: function(){
-                var that = this;
-                this.show = true;
-                setTimeout(function() {
-                    that.show = false
-                }, 800)
-            },
-            top: function () {
-                this.site = 'top'
-                this.change()
-            },
-            mid: function () {
-                this.site = ''
-                this.change()
-            },
-            bot: function () {
-                this.site = 'bottom'
-                this.change()
             },
         }
     })

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>toast</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/forheyin.css" />
+    <script src="../js/flexible_css.debug.js"></script>
+    <script src="../js/flexible.debug.js"></script>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="toasts" style="margin: 10px" v-cloak>
+        <!---------------------------------------- toast插件 --------------------------------------------------------------------------- -->
+        <transition name="out">
+            <div class="toast" v-show="show">
+                <div :class="[site,'m_con']">
+                    <p>我是一个toast</p>
+                </div>
+            </div>
+        </transition>
+
+        <div class="cut"></div>
+        <button class="btn btn_warn btn_large" @tap="test_1">测试</button>
+        <v-toast ref="sonMet" :text="toastText" :site="site"></v-toast>
+    </div>
+</body>
+<script src="../js/vue2.4.min.js"></script>
+<script src="../js/yhn-tap.js"></script>
+<script src="../js/plug.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var vm = new Vue({
+        el: '#toasts',
+        data: {
+            show: false,
+            site: '',
+            toastText: ''
+        },
+        created: function () {},
+        methods: {
+            test_1: function () {
+                toaFun()
+            }
+        }
+    })
+</script>
+
+</html>
