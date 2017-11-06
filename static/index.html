@@ -32,7 +32,7 @@
         </ul>
         <div class="cut"></div>
         <ul class="accordion">
-            <li class="acc_1" v-for="i,index in list">
+            <li class="acc_1" v-for="i,index in list" style="border-bottom: 1px solid red">
                 <div class="acc_2" @tap="cutAcc(i)">{{i.name}}
                     <span class="iconfont icon-right"></span>
                 </div>
@@ -53,7 +53,7 @@
             <li v-for="i in assList">
                 <div>
                     <a :href="i.url">
-                        <img src="../img/icon.png" alt="">
+                        <span :class="[i.class,'iconfont']"></span>
                         <p>{{i.name}}</p>
                     </a>
                 </div>
@@ -77,13 +77,16 @@
             assList: [
                 {
                     name: 'Toast',
-                    url: 'view/toast.html'
+                    url: 'view/toast.html',
+                    class: 'icon-TOASTcuo'
                 },{
                     name: 'Confirm',
-                    url: 'view/confirm.html'
+                    url: 'view/confirm.html',
+                    class: 'icon-confirm'
                 },{
                     name: 'Button',
-                    url: 'view/button.html'
+                    url: 'view/button.html',
+                    class: 'icon-button'
                 },
             ]
         },

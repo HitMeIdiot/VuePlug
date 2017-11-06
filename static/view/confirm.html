@@ -14,11 +14,17 @@
 
 <body>
     <div id="confirms" style="margin: 10px" v-cloak>
-        <transition name="out">
+        <!-- <transition name="out">
             <div class="confirm" v-show="flag">
                 <div class="m_con">
                     <div class="m_head">操作提示</div>
                     <div class="m_body">
+                        长风破浪会有时，直挂云帆济沧海
+                        长风破浪会有时，直挂云帆济沧海
+                        长风破浪会有时，直挂云帆济沧海
+                        长风破浪会有时，直挂云帆济沧海
+                        长风破浪会有时，直挂云帆济沧海
+                        长风破浪会有时，直挂云帆济沧海
                         长风破浪会有时，直挂云帆济沧海
                     </div>
                     <div class="m_foot">
@@ -27,7 +33,19 @@
                     </div>
                 </div>
             </div>
-        </transition>
+        </transition> -->
+        <div class="assCon">
+            <button class="btn btn_def btn_large" @tap="test1">打开alert提示框</button>  
+            <button class="btn btn_warn btn_large"  @tap="test2">打开confirm提示框</button>  
+        </div>
+        <v-confirm @con="test" ref="funCon" :contype="contype">
+            <template slot="conText">
+                <ul>
+                    <li v-for="i in 5">长风破浪会有时，直挂云帆济沧海</li>
+                </ul>
+            </template>    
+        </v-confirm>
+        <v-toast ref="sonMet" :text = toastText></v-toast>
     </div>
 </body>
 <script src="../js/vue2.4.min.js"></script>
@@ -37,11 +55,24 @@
     var vm = new Vue({
         el: '#confirms',
         data: {
-            flag: true
+            flag: true,
+            contype: '1',
+            toastText: ''
         },
         created: function () {
         },
         methods: {
+            test: function () {
+                Toast('操作成功');
+            },
+            test1: function () {
+                vm.contype = '1';
+                vm.$refs.funCon.conFade();
+            },
+            test2: function () {
+                vm.contype = '2';
+                vm.$refs.funCon.conFade();
+            }
         }
     })
 </script>

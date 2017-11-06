@@ -19,15 +19,14 @@
 <body>
     <div id="toasts" style="margin: 10px" v-cloak>
         <!---------------------------------------- toast插件 --------------------------------------------------------------------------- -->
-        <transition name="out">
+        <!-- <transition name="out">
             <div class="toast" v-show="show">
                 <div :class="[site,'m_con']">
                     <p>我是一个toast</p>
                 </div>
             </div>
         </transition>
-
-        <div class="cut"></div>
+        <div class="cut"></div> -->
         <button class="btn btn_warn btn_large" @tap="test_1">测试</button>
         <v-toast ref="sonMet" :text="toastText" :site="site"></v-toast>
     </div>
@@ -46,7 +45,7 @@
         created: function () {},
         methods: {
             test_1: function () {
-                toaFun()
+                Toast('我回来了')
             }
         }
     })

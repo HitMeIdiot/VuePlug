@@ -5,34 +5,48 @@
 @function re($num) {
     @return $num / 75 * 1rem;
 }
+
 [ v-cloak] {
     display: none;
 }
+
 .cut {
     height: 10px;
 }
-// color
-$f: #fff;
-$p: #1f7ef2; // main color
-$b: #000;
-$fc: #f0f0f0;
-// font
-$f20: re(20);
-$f24: re(24);
-$f24: re(26);
-$f28: re(28);
-$f30: re(30);
-$f32: re(32);
-$f34: re(34);
+// toast confirm  the same css
+@mixin toaCon {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+@mixin main_con {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
 // index.html css
 #myCss {
     header {
         height: 40px;
         line-height: 40px;
-        background: -webkit-linear-gradient(left, #8B94FD, #1f7ef2,#EA2000); /* Safari 5.1 - 6.0 */
-        background: -o-linear-gradient(right, #8B94FD, #1f7ef2,#EA2000); /* Opera 11.1 - 12.0 */
-        background: -moz-linear-gradient(right, #8B94FD, #1f7ef2,#EA2000); /* Firefox 3.6 - 15 */
-        background: linear-gradient(to right, #8B94FD,#1f7ef2,#EA2000); /* The grammar of the standard (must be put at last) */
+        background: -webkit-linear-gradient(left, #8B94FD, #1f7ef2, #EA2000);
+        /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, #8B94FD, #1f7ef2, #EA2000);
+        /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, #8B94FD, #1f7ef2, #EA2000);
+        /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right, #8B94FD, #1f7ef2, #EA2000);
+        /* The grammar of the standard (must be put at last) */
         margin-bottom: 10px;
         h1 {
             font-size: re(40);
@@ -54,16 +68,87 @@ $f34: re(34);
                 width: 40px;
                 height: 40px;
             }
+            span {
+                font-size: 45px;
+                color: #745785;
+            }
         }
     }
 }
+.assCon {
+    @include main_con;
+    width: 80%;
+    button {
+        margin-bottom: 20px;
+    }
+}
+// color
+$f: #fff;
+$p: #1f7ef2; // main color
+$b: #000;
+$fc: #f0f0f0;
+// font
+$f20: re(20);
+$f24: re(24);
+$f24: re(26);
+$f28: re(28);
+$f30: re(30);
+$f32: re(32);
+$f34: re(34);
+// 1px 
+@mixin onePx {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    color: #D5D5D6;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+@mixin borTop {
+    @include onePx;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    height: 1px;
+    border-top: 1px solid $fc;
+}
+
+@mixin borBot {
+    @include onePx;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    height: 1px;
+    border-bottom: 1px solid $fc;
+    bottom: 0;
+    top: unset;
+}
+
+@mixin borRg {
+    @include onePx;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    border-right: 1px solid $fc;
+    bottom: 0;
+    left: unset;
+}
+
+@mixin borlf {
+    @include onePx;
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
+    width: 1px;
+    border-left: 1px solid $fc;
+    bottom: 0;
+}
+
 // button
 .btn {
     -webkit-appearance: none;
     -moz-appearance: none;
-         appearance: none;
+    appearance: none;
     border-radius: 5px;
-    border: 0;
     color: inherit;
     font-size: $f34;
     padding: 10px 12px;
@@ -71,14 +156,19 @@ $f34: re(34);
     overflow: hidden;
     position: relative;
     text-align: center;
+    line-height: 1;
+    border: 1px solid #d8dce5;
 }
+
 .btn_def {
-    color: $b;
+    background: $f;
 }
+
 .btn_pri {
     background: $p;
-    color:$f;
+    color: $f;
 }
+
 .btn:after {
     background-color: $b;
     content: " ";
@@ -89,13 +179,16 @@ $f34: re(34);
     left: 0;
     position: absolute;
 }
+
 .btn_large {
     display: block;
     width: 100%;
 }
+
 .btn:not(.is-disabled):active:after {
-    opacity: 0.3;
+    opacity: 0.1;
 }
+
 .btn_warn {
     background: #ef4f4f;
     color: $f;
@@ -107,9 +200,9 @@ $f34: re(34);
         display: flex;
         height: re(100);
         line-height: re(100);
-        border-bottom: 1px solid #F8F8F8;
         font-size: $f30;
         color: $b;
+        position: relative;
         span {
             flex-grow: unset;
             width: re(40);
@@ -129,35 +222,24 @@ $f34: re(34);
             overflow: hidden;
         }
     }
+    li:after {
+        @include borBot;
+    }
 }
+
 // vue animation
-.out-enter-active, .out-leave-active {
+.out-enter-active,
+.out-leave-active {
     transition: opacity .5s
 }
-.out-enter, .out-leave-active {
+
+.out-enter,
+.out-leave-active {
     opacity: 0
 }
 
-// toast confirm  the same css
-@mixin toaCon {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-}
-@mixin main_con {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    border-radius: 3px;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
+
+
 // toast css
 .toast {
     @include toaCon;
@@ -165,7 +247,7 @@ $f34: re(34);
     .m_con {
         @include main_con;
         width: 70%;
-        background: rgba(0,0,0,.7);
+        background: rgba(0, 0, 0, .7);
         p {
             color: $f;
             padding: re(24) 0;
@@ -181,22 +263,11 @@ $f34: re(34);
         bottom: re(0);
     }
 }
-// 1px 
-@mixin onePx {
-    content: " ";
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    color: #D5D5D6;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-}
 
 // confirm css
 .confirm {
     @include toaCon;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     .m_con {
         @include main_con;
         background: #fff;
@@ -225,21 +296,23 @@ $f34: re(34);
                 position: relative;
                 font-size: $f30;
             }
-            span:last-child::after {
-                @include onePx;
-                -webkit-transform: scaleX(0.5);
-                transform: scaleX(0.5);
-                width: 1px;
-                border-left: 1px solid $fc;
-                bottom: 0;
+            span:first-child:after {
+                @include borRg;
             }
         }
         .m_foot:after {
-            @include onePx;
-            -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-            height: 1px;
-            border-top: 1px solid $fc;
+            @include borTop;
+        }
+        .m_foots {
+            display: flex;
+            position: relative;
+            line-height: re(100);
+            span {
+                flex-grow: 1;
+                display: inline-block;
+                position: relative;
+                font-size: $f30;
+            }
         }
     }
 }
