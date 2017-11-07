@@ -35,17 +35,24 @@
             </div>
         </transition> -->
         <div class="assCon">
-            <button class="btn btn_def btn_large" @tap="test1">打开alert提示框</button>  
-            <button class="btn btn_warn btn_large"  @tap="test2">打开confirm提示框</button>  
+            <button class="btn btn_def btn_large" @tap="test1">打开confirm提示框</button>
+            <button class="btn btn_warn btn_large" @tap="test2">打开alert提示框</button>
         </div>
-        <v-confirm @con="test" ref="funCon" :contype="contype">
+        <v-confirm @con="test" ref="funCon">
             <template slot="conText">
                 <ul>
                     <li v-for="i in 5">长风破浪会有时，直挂云帆济沧海</li>
                 </ul>
-            </template>    
+            </template>
         </v-confirm>
-        <v-toast ref="sonMet" :text = toastText></v-toast>
+        <v-toast ref="sonMet" :text=toastText></v-toast>
+        <v-confirm ref="funCons" contype="2">
+            <template slot="conText">
+                <ul>
+                    <li v-for="i in 5">举杯邀明月，对影成三人</li>
+                </ul>
+            </template>
+        </v-confirm>
     </div>
 </body>
 <script src="../js/vue2.4.min.js"></script>
@@ -57,21 +64,21 @@
         data: {
             flag: true,
             contype: '1',
-            toastText: ''
+            toastText: '',
         },
-        created: function () {
-        },
+        created: function () {},
         methods: {
             test: function () {
-                Toast('操作成功');
+                Toast('操作成功')
+            },
+            tests: function () {
+                Toast('提示成功')
             },
             test1: function () {
-                vm.contype = '1';
                 vm.$refs.funCon.conFade();
             },
             test2: function () {
-                vm.contype = '2';
-                vm.$refs.funCon.conFade();
+                vm.$refs.funCons.conFade();
             }
         }
     })

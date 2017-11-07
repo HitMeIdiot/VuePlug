@@ -42,12 +42,12 @@ function Toast(item) {
     // console.log(typeof item)
     if (typeof item === 'string' || typeof item === 'number') {
         vm.toastText = item;
-        console.log(1)
+        // console.log(1)
     } else if (typeof item == 'undefined' || item === null) {
         vm.toastText = '这不是演习';
-        console.log(2)
+        // console.log(2)
     } else {
-        console.log(3)
+        // console.log(3)
         vm.site = item.position;
         vm.toastText = item.text;
     }
@@ -59,17 +59,14 @@ Vue.component('v-confirm', {
     template: `<transition name="out">
         <div class="confirm" v-show="flag" @tap="flag = false">
             <div class="m_con">
-                <div class="m_head">{{conTitle}}</div>
+                <div class="m_head">{{contitle}}</div>
                 <div class="m_body">
                     <slot name="conText"> 
                         
                     </slot>        
                 </div>
-                <div class="m_foot" v-if="contype==='1'">
-                    <span @tap="flag=false">取消</span>
-                    <span @tap="conFun">确定</span>
-                </div>
-                <div class="m_foot" v-if="contype==='2'">
+                <div class="m_foot" >
+                    <span @tap="flag=false" v-if="contype==='1'">取消</span>
                     <span @tap="conFun">确定</span>
                 </div>
             </div>
@@ -81,7 +78,7 @@ Vue.component('v-confirm', {
         }
     },
     props: {
-        conTitle: {
+        contitle: {
             type: String,
             default: '操作提示'
         },
@@ -97,11 +94,10 @@ Vue.component('v-confirm', {
             this.flag = true;
         },
         conFun: function () {
-            if (this.contype === '1') {
-                this.$emit('con','转过来');
-            }
+            // if (this.contype === '1') {
+                this.$emit('con', '转过来');
+            // }
             this.flag = false;
-            console.log(this.contype)
         }
     }
 });
