@@ -67,6 +67,7 @@
   position: relative;
   text-align: center;
   line-height: 1;
+  border: none;
   border: 1px solid #d8dce5; }
 
 .btn_def {
@@ -75,16 +76,6 @@
 .btn_pri {
   background: #1f7ef2;
   color: #fff; }
-
-.btn:after {
-  background-color: #000;
-  content: " ";
-  opacity: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  position: absolute; }
 
 .btn_large {
   display: block;
@@ -105,7 +96,8 @@
     line-height: 1.33333rem;
     font-size: 0.4rem;
     color: #000;
-    position: relative; }
+    position: relative;
+    padding: 0 0.53333rem; }
     .def_form li span {
       flex-grow: unset;
       width: 0.53333rem;

@@ -27,8 +27,12 @@
             </div>
         </transition>
         <div class="cut"></div> -->
-        <button class="btn btn_warn btn_large" @tap="test_1">测试</button>
-        <v-toast ref="sonMet" :text="toastText" :site="site"></v-toast>
+        <div class="assCon">
+            <button class="btn btn_warn btn_large" @tap="test_1">上</button>
+            <button class="btn btn_pri btn_large" @tap="test_2">测试</button>
+            <button class="btn btn_def btn_large" @tap="test_3">下</button>
+        </div>
+        <v-toast ref="sonMet" :text="text" :site="site"></v-toast>
     </div>
 </body>
 <script src="../js/vue2.4.min.js"></script>
@@ -40,13 +44,25 @@
         data: {
             show: false,
             site: '',
-            toastText: ''
+            text: ''
         },
         created: function () {},
         methods: {
             test_1: function () {
-                Toast('我回来了')
-            }
+                Toast({
+                    text: '众人皆醉我独醒',
+                    site: 'top'
+                })
+            },
+            test_2: function () {
+                Toast()
+            },
+            test_3: function () {
+                Toast({
+                    text: '下面给你吃',
+                    site: 'bottom'
+                })
+            },
         }
     })
 </script>

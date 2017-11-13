@@ -41,15 +41,16 @@ Vue.component('v-toast', {
 function Toast(item) {
     // console.log(typeof item)
     if (typeof item === 'string' || typeof item === 'number') {
-        vm.toastText = item;
+        vm.text = item;
         // console.log(1)
     } else if (typeof item == 'undefined' || item === null) {
-        vm.toastText = '这不是演习';
+        vm.text = '这不是演习';
+        vm.site = ''
         // console.log(2)
     } else {
         // console.log(3)
-        vm.site = item.position;
-        vm.toastText = item.text;
+        vm.site = item.site;
+        vm.text = item.text;
     }
     vm.$refs.sonMet.fade();
 };

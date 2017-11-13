@@ -157,9 +157,9 @@ $f34: re(34);
     position: relative;
     text-align: center;
     line-height: 1;
+    border: none;
     border: 1px solid #d8dce5;
 }
-
 .btn_def {
     background: $f;
 }
@@ -167,17 +167,6 @@ $f34: re(34);
 .btn_pri {
     background: $p;
     color: $f;
-}
-
-.btn:after {
-    background-color: $b;
-    content: " ";
-    opacity: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
 }
 
 .btn_large {
@@ -203,6 +192,7 @@ $f34: re(34);
         font-size: $f30;
         color: $b;
         position: relative;
+        padding: 0 re(40);
         span {
             flex-grow: unset;
             width: re(40);

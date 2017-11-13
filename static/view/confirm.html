@@ -45,7 +45,6 @@
                 </ul>
             </template>
         </v-confirm>
-        <v-toast ref="sonMet" :text=toastText></v-toast>
         <v-confirm ref="funCons" contype="2">
             <template slot="conText">
                 <ul>
@@ -53,6 +52,7 @@
                 </ul>
             </template>
         </v-confirm>
+        <v-toast ref="sonMet" :text="text"></v-toast>
     </div>
 </body>
 <script src="../js/vue2.4.min.js"></script>
@@ -64,7 +64,7 @@
         data: {
             flag: true,
             contype: '1',
-            toastText: '',
+            text: '',
         },
         created: function () {},
         methods: {
