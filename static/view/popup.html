@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>popup</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/forheyin.css" />
+    <script src="../js/flexible_css.debug.js"></script>
+    <script src="../js/flexible.debug.js"></script>
+</head>
+
+<body>
+    <div id="popup" style="margin: 10px;height: 2000px" v-cloak>
+        <div class="assCon">
+            <button class="btn btn_pri btn_large" @tap="test">弹出来</button>
+        </div>
+        <v-popup ref="sonMet">
+            <template>
+                <ul>
+                    <li v-for="i in 50">
+                        <p>{{i}}君不见黄河之水天上来</p>
+                    </li>
+                </ul>
+            </template>
+        </v-popup>
+    </div>
+</body>
+<script src="../js/vue2.4.min.js"></script>
+<script src="../js/yhn-tap.js"></script>
+<script src="../js/plug.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var vm = new Vue({
+        el: '#popup',
+        data: {
+        },
+        created: function () {
+        },
+        methods: {
+            test: function () {
+                vm.$refs.sonMet.popFade()
+            }
+        }
+    })
+</script>
+
+</html>

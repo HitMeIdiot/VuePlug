@@ -15,14 +15,22 @@
 }
 // toast confirm  the same css
 @mixin toaCon {
+    overflow: hidden;
     position: fixed;
-    z-index: 1000;
+    z-index: 99999;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
 }
-
+// zhong jian cen
+@mixin over {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: .6;
+}
 @mixin main_con {
     position: fixed;
     left: 50%;
@@ -258,6 +266,9 @@ $f34: re(34);
 .confirm {
     @include toaCon;
     background: rgba(0, 0, 0, 0.5);
+    .m_over {
+        @include over
+    }
     .m_con {
         @include main_con;
         background: #fff;
@@ -305,4 +316,26 @@ $f34: re(34);
             }
         }
     }
+}
+
+.popup {
+    @include toaCon;
+    .popup_over {
+        @include over
+    }
+    .popup_con {
+        background: $f;
+        overflow-y: auto;
+        border-top: 1px solid #F0F0F0;
+        width: 100%;
+        height: 400px;
+        position: absolute;
+        bottom: 0;
+        transition: all linear .3s;
+        transform: translateY(100%);
+    }
+    .popup_con.active {
+        transform: translateY(0);
+    }
+  
 }

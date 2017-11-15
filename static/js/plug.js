@@ -58,7 +58,8 @@ function Toast(item) {
 //  confirm 组件
 Vue.component('v-confirm', {
     template: `<transition name="out">
-        <div class="confirm" v-show="flag" @tap="flag = false">
+        <div class="confirm"  v-show="flag" >
+            <div class="m_over"@tap="flag = false"></div>
             <div class="m_con">
                 <div class="m_head">{{contitle}}</div>
                 <div class="m_body">
@@ -102,3 +103,41 @@ Vue.component('v-confirm', {
         }
     }
 });
+
+// popup组件
+Vue.component('v-popup',{
+    template: `<div class="popup" v-show="flags">
+        <div @tap="close" class="popup_over"></div>
+        <div :class="[flag ? 'active' : '', 'popup_con']">
+            <slot></slot>
+        </div>
+    </div>`,
+    data: function () {
+        return {
+            flag: false,
+            flags: false,
+            html: null
+        }
+    },
+    props: {
+    },
+    created: function () {
+        this.html = document.getElementsByTagName("html")[0];
+    },
+    methods: {
+        popFade: function () {
+            this.flags = true;
+            setTimeout(()=>{
+                this.flag = true;
+            },0);
+            this.html.style.overflowY="hidden";
+        },
+        close: function () {
+            this.flag = false;
+            setTimeout(()=>{
+                this.flags = false;
+            },300);
+            this.html.style.overflowY="scroll";
+        }
+    }
+})
