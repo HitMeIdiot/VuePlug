@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>piker</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="../css/forheyin.css" />
+    <script src="../js/flexible_css.debug.js"></script>
+    <script src="../js/flexible.debug.js"></script>
+</head>
+
+<body>
+    <div id="pickers" style="margin: 10px" v-cloak>
+        <div class="assCon">
+            <button class="btn btn_warn btn_large" @tap="test">弹弹弹</button>
+        </div>
+        <v-popup ref="popMet" height='auto'>
+            <v-picker>
+                <template>
+                    <div class="picker_rule"></div>
+                    <ul class="picker_con">
+                        <li v-for="i in 5">
+                            <span>科目{{i}}</span>
+                        </li>
+                    </ul>
+                </template>
+            </v-picker>
+        </v-popup>
+    </div>
+</body>
+<script src="../js/vue2.4.min.js"></script>
+<script src="../js/yhn-tap.js"></script>
+<script src="../js/plug.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var vm = new Vue({
+        el: '#pickers',
+        data: {
+            height: '1000px'
+        },
+        created: function () {
+
+        },
+        mounted: function () {
+            this.one();
+        },
+        methods: {
+            test: function () {
+                console.log(this.$refs);
+                this.$refs.popMet.popFade();
+            },
+            one: function () {
+                document.getElementsByClassName("picker_con")[0].style.transform =
+                    'translate3d(0px, -36px, 0px)';
+            },
+            goStar: function () {
+
+            },
+            goMove: function () {
+
+            },
+            goEnd: function () {
+
+            }
+        }
+    })
+</script>
+
+</html>

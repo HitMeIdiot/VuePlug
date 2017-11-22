@@ -18,7 +18,7 @@
   /* Firefox 3.6 - 15 */
   background: linear-gradient(to right, #8B94FD, #1f7ef2, #EA2000);
   /* The grammar of the standard (must be put at last) */
-  margin-bottom: 10px; }
+  margin-bottom: 40px; }
   #myCss header h1 {
     font-size: 0.53333rem;
     text-align: center;
@@ -267,6 +267,10 @@
     height: 100%;
     background: #000000;
     opacity: .6; }
+  .popup .popup_con.active {
+    animation: popUp .35s forwards; }
+  .popup .popup_con.unactive {
+    animation: popDown .35s forwards; }
   .popup .popup_con {
     background: #fff;
     overflow-y: auto;
@@ -275,9 +279,64 @@
     height: 400px;
     position: absolute;
     bottom: 0;
-    transition: all linear .3s;
     transform: translateY(100%); }
-  .popup .popup_con.active {
+
+@keyframes popUp {
+  from {
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%); }
+  to {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0); } }
+@keyframes popDown {
+  from {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
     transform: translateY(0); }
+  to {
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%); } }
+.picker {
+  display: block;
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  width: 100%; }
+  .picker .picker_con {
+    padding: 0;
+    margin: -18px 0 0;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    text-align: center; }
+    .picker .picker_con li {
+      position: relative;
+      font-size: 0.37333rem; }
+  .picker .picker_rule {
+    width: 100%;
+    height: 36px;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    z-index: 3;
+    background-image: -webkit-linear-gradient(top, #d0d0d0, #d0d0d0, transparent, transparent), -webkit-linear-gradient(bottom, #d0d0d0, #d0d0d0, transparent, transparent);
+    background-image: linear-gradient(to bottom, #d0d0d0, #d0d0d0, transparent, transparent), linear-gradient(to top, #d0d0d0, #d0d0d0, transparent, transparent);
+    background-position: top, bottom;
+    background-size: 100% 1px;
+    background-repeat: no-repeat; }
 
 /*# sourceMappingURL=forheyin.css.map */

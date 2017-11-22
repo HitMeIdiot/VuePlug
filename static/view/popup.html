@@ -21,12 +21,13 @@
             <template>
                 <ul>
                     <li v-for="i in 50">
-                        <p>{{i}}君不见黄河之水天上来</p>
+                        <p>君不见黄河之水天上来</p>
                     </li>
                 </ul>
             </template>
         </v-popup>
     </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis eligendi asperiores, dolores doloribus fugit officiis minima modi aliquam porro ducimus esse culpa, dolor accusantium in. Iste quos accusantium nostrum nisi.</p>
 </body>
 <script src="../js/vue2.4.min.js"></script>
 <script src="../js/yhn-tap.js"></script>
@@ -40,6 +41,7 @@
         },
         methods: {
             test: function () {
+                console.log(this.$refs)
                 vm.$refs.sonMet.popFade()
             }
         }

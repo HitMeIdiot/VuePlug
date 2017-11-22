@@ -63,7 +63,7 @@ Vue.component('v-confirm', {
             <div class="m_con">
                 <div class="m_head">{{contitle}}</div>
                 <div class="m_body">
-                    <slot name="conText"> 
+                    <slot> 
                         
                     </slot>        
                 </div>
@@ -97,7 +97,7 @@ Vue.component('v-confirm', {
         },
         conFun: function () {
             // if (this.contype === '1') {
-                this.$emit('con', '转过来');
+            this.$emit('con', '转过来');
             // }
             this.flag = false;
         }
@@ -105,10 +105,10 @@ Vue.component('v-confirm', {
 });
 
 // popup组件
-Vue.component('v-popup',{
+Vue.component('v-popup', {
     template: `<div class="popup" v-show="flags">
         <div @tap="close" class="popup_over"></div>
-        <div :class="[flag ? 'active' : '', 'popup_con']">
+        <div :class="[flag ? 'active' : 'unactive', 'popup_con']">
             <slot></slot>
         </div>
     </div>`,
@@ -120,24 +120,58 @@ Vue.component('v-popup',{
         }
     },
     props: {
+        height: {
+            type: String,
+            default: '400px'
+        }
     },
     created: function () {
+        
+    },
+    mounted: function () {
         this.html = document.getElementsByTagName("html")[0];
+        if (this.height) {
+            document.getElementsByClassName("popup_con")[0].style.height = this.height;
+        }
     },
     methods: {
         popFade: function () {
             this.flags = true;
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.flag = true;
-            },0);
-            this.html.style.overflowY="hidden";
+            });
+            this.html.style.overflowY = "hidden";
+            this.html.style.position = "fixed";
         },
         close: function () {
             this.flag = false;
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.flags = false;
-            },300);
-            this.html.style.overflowY="scroll";
+            }, 350);
+            this.html.style.overflowY = "scroll";
+            this.html.style.position = "static";
         }
     }
-})
+});
+
+// popup组件
+Vue.component('v-picker', {
+    template: `<div class="picker">
+        <slot></slot>
+    </div>`,
+    data: function () {
+        return {
+        }
+    },
+    props: {
+    },
+    created: function () {
+    },
+    methods: {
+        pickerFade: function () {
+            alert(111)
+        },
+        close: function () {
+        }
+    }
+});

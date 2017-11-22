@@ -39,14 +39,14 @@
             <button class="btn btn_warn btn_large" @tap="test2">打开alert提示框</button>
         </div>
         <v-confirm @con="test" ref="funCon">
-            <template slot="conText">
+            <template>
                 <ul>
                     <li v-for="i in 5">长风破浪会有时，直挂云帆济沧海</li>
                 </ul>
             </template>
         </v-confirm>
         <v-confirm ref="funCons" contype="2">
-            <template slot="conText">
+            <template>
                 <ul>
                     <li v-for="i in 5">举杯邀明月，对影成三人</li>
                 </ul>
