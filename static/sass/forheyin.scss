@@ -13,6 +13,7 @@
 .cut {
     height: 10px;
 }
+
 // toast confirm  the same css
 @mixin toaCon {
     overflow: hidden;
@@ -23,6 +24,7 @@
     right: 0;
     bottom: 0;
 }
+
 // zhong jian cen
 @mixin over {
     position: absolute;
@@ -31,6 +33,7 @@
     background: #000000;
     opacity: .6;
 }
+
 @mixin main_con {
     position: fixed;
     left: 50%;
@@ -42,6 +45,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+
 // index.html css
 #myCss {
     header {
@@ -83,6 +87,7 @@
         }
     }
 }
+
 .assCon {
     @include main_con;
     width: 80%;
@@ -90,6 +95,7 @@
         margin-bottom: 20px;
     }
 }
+
 // color
 $f: #fff;
 $p: #1f7ef2; // main color
@@ -168,6 +174,7 @@ $f34: re(34);
     border: none;
     border: 1px solid #d8dce5;
 }
+
 .btn_def {
     background: $f;
 }
@@ -182,15 +189,13 @@ $f34: re(34);
     width: 100%;
 }
 
-.btn:not(.is-disabled):active:after {
-    opacity: 0.1;
-}
-
 .btn_warn {
     background: #ef4f4f;
     color: $f;
 }
-
+.btn:active {
+    opacity: 0.8;
+}
 .def_form {
     background: $f;
     li {
@@ -235,8 +240,6 @@ $f34: re(34);
 .out-leave-active {
     opacity: 0
 }
-
-
 
 // toast css
 .toast {
@@ -324,13 +327,11 @@ $f34: re(34);
     .popup_over {
         @include over
     }
-     .popup_con.active {
-        animation: popUp .35s forwards;
-        // transform: translateY(0);
+    .popup_con.active {
+        animation: popUp .35s forwards; // transform: translateY(0);
     }
     .popup_con.unactive {
-        animation: popDown .35s forwards;
-        // transform: translateY(0);
+        animation: popDown .35s forwards; // transform: translateY(0);
     }
     .popup_con {
         background: $f;
@@ -339,42 +340,42 @@ $f34: re(34);
         width: 100%;
         height: 400px;
         position: absolute;
-        bottom: 0;
-        transform: translateY(100%);
+        bottom: 0; // transform: translateY(100%);
         // transition: transform .35s ease-out 0s;
     }
 }
+
 @keyframes popUp {
     from {
         -webkit-transform: translateY(100%);
-           -moz-transform: translateY(100%);
-            -ms-transform: translateY(100%);
-             -o-transform: translateY(100%);
-                transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
     }
     to {
         -webkit-transform: translateY(0);
-           -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-             -o-transform: translateY(0);
-                transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
     }
 }
 
 @keyframes popDown {
     from {
         -webkit-transform: translateY(0);
-           -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-             -o-transform: translateY(0);
-                transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        transform: translateY(0);
     }
     to {
         -webkit-transform: translateY(100%);
-           -moz-transform: translateY(100%);
-            -ms-transform: translateY(100%);
-             -o-transform: translateY(100%);
-                transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        transform: translateY(100%);
     }
 }
 
@@ -411,5 +412,61 @@ $f34: re(34);
         background-position: top, bottom;
         background-size: 100% 1px;
         background-repeat: no-repeat;
+    }
+}
+
+.loading {
+    @include toaCon;
+    .m_over {
+        @include over;
+        background: #fff;
+        opacity: 1;
+    }
+    .spinner {
+        @include main_con;
+        text-align: center;
+        div {
+            width: 30px;
+            height: 30px;
+            background-color: #7990FC;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+            animation: bouncedelay 1.4s infinite ease-in-out;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+            background-color: #675D95;
+        }
+        .bounce2 {
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+            background-color: #A04351;
+        }
+        @-webkit-keyframes bouncedelay {
+            0%,
+            90%,
+            100% {
+                -webkit-transform: scale(0.0)
+            }
+            40% {
+                -webkit-transform: scale(1.0)
+            }
+        }
+        @keyframes bouncedelay {
+            0%,
+            90%,
+            100% {
+                transform: scale(0.0);
+                -webkit-transform: scale(0.0);
+            }
+            40% {
+                transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+            }
+        }
     }
 }
