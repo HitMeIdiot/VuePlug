@@ -75,14 +75,14 @@
         text-align: center;
         li {
             margin-bottom: 40px;
-            width: 33.33%;
+            flex: 0 0 33.3%;
             img {
                 width: 40px;
                 height: 40px;
             }
             span {
                 font-size: 45px;
-                color: #745785;
+                color: #663366;
             }
         }
     }
@@ -101,6 +101,8 @@ $f: #fff;
 $p: #1f7ef2; // main color
 $b: #000;
 $fc: #f0f0f0;
+$fd: #ddd;
+$sf: #FF6600;
 // font
 $f20: re(20);
 $f24: re(24);
@@ -126,7 +128,7 @@ $f34: re(34);
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
     height: 1px;
-    border-top: 1px solid $fc;
+    border-top: 1px solid $fd;
 }
 
 @mixin borBot {
@@ -134,7 +136,7 @@ $f34: re(34);
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
     height: 1px;
-    border-bottom: 1px solid $fc;
+    border-bottom: 1px solid $fd;
     bottom: 0;
     top: unset;
 }
@@ -143,7 +145,7 @@ $f34: re(34);
     @include onePx;
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
-    border-right: 1px solid $fc;
+    border-right: 1px solid $fd;
     bottom: 0;
     left: unset;
 }
@@ -153,7 +155,7 @@ $f34: re(34);
     -webkit-transform: scaleX(0.5);
     transform: scaleX(0.5);
     width: 1px;
-    border-left: 1px solid $fc;
+    border-left: 1px solid $fd;
     bottom: 0;
 }
 
@@ -302,6 +304,9 @@ $f34: re(34);
             }
             span:first-child:after {
                 @include borRg;
+            }
+            span:last-child {
+                color: $sf;
             }
         }
         .m_foot:after {

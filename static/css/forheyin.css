@@ -32,13 +32,13 @@
   text-align: center; }
   #myCss ul.main li {
     margin-bottom: 40px;
-    width: 33.33%; }
+    flex: 0 0 33.3%; }
     #myCss ul.main li img {
       width: 40px;
       height: 40px; }
     #myCss ul.main li span {
       font-size: 45px;
-      color: #745785; }
+      color: #663366; }
 
 .assCon {
   position: fixed;
@@ -124,7 +124,7 @@
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
     height: 1px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #ddd;
     bottom: 0;
     top: unset; }
 
@@ -227,9 +227,11 @@
         transform-origin: 0 0;
         -webkit-transform: scaleX(0.5);
         transform: scaleX(0.5);
-        border-right: 1px solid #f0f0f0;
+        border-right: 1px solid #ddd;
         bottom: 0;
         left: unset; }
+      .confirm .m_con .m_foot span:last-child {
+        color: #FF6600; }
     .confirm .m_con .m_foot:after {
       content: " ";
       position: absolute;
@@ -242,7 +244,7 @@
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
       height: 1px;
-      border-top: 1px solid #f0f0f0; }
+      border-top: 1px solid #ddd; }
     .confirm .m_con .m_foots {
       display: flex;
       position: relative;
